@@ -1,4 +1,4 @@
-package com.astra.studenthomebackend.accounts.model;
+package com.astra.studenthomebackend.accounts.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

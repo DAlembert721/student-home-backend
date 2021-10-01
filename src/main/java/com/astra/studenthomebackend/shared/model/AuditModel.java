@@ -1,4 +1,4 @@
-package com.astra.studenthomebackend.common.model;
+package com.astra.studenthomebackend.shared.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

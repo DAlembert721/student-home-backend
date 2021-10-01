@@ -1,4 +1,4 @@
-package com.astra.studenthomebackend.accounts.model;
+package com.astra.studenthomebackend.accounts.domain.model;
 
 import com.astra.studenthomebackend.subscritions.model.Subscription;
 import com.fasterxml.jackson.annotation.JsonIgnore;

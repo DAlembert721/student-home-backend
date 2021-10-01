@@ -1,15 +1,14 @@
-package com.astra.studenthomebackend.accounts.model.auth;
+package com.astra.studenthomebackend.accounts.domain.model.auth;
 
-import com.astra.studenthomebackend.common.model.AuditModel;
+import com.astra.studenthomebackend.shared.model.AuditModel;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
-import java.util.Set;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table(name = "users", uniqueConstraints = {
@@ -35,12 +34,8 @@ public class User extends AuditModel {
     @Size(max = 120)
     private String password;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private UserType role;
 
 }

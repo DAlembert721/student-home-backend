@@ -1,6 +1,6 @@
 package com.astra.studenthomebackend.properties.services;
 
-import com.astra.studenthomebackend.exceptions.ResourceNotFoundException;
+import com.astra.studenthomebackend.shared.exceptions.ResourceNotFoundException;
 import com.astra.studenthomebackend.properties.domain.models.Property;
 import com.astra.studenthomebackend.properties.domain.repositories.PropertyRepository;
 import com.astra.studenthomebackend.properties.domain.services.PropertyService;
@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PropertyServiceImpl implements PropertyService {

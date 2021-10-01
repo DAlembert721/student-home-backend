@@ -1,7 +1,7 @@
-package com.astra.studenthomebackend.accounts.model;
+package com.astra.studenthomebackend.accounts.domain.model;
 
-import com.astra.studenthomebackend.accounts.model.auth.User;
-import com.astra.studenthomebackend.common.model.AuditModel;
+import com.astra.studenthomebackend.accounts.domain.model.auth.User;
+import com.astra.studenthomebackend.shared.model.AuditModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "accounts")
-public class Account extends AuditModel {
+public abstract class Account extends AuditModel {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,10 +44,6 @@ public class Account extends AuditModel {
 
     @Size(max = 250)
     private String description;
-
-    @NotNull
-    @Size(max = 10)
-    private String type;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
