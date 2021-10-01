@@ -10,7 +10,7 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost/student-home
-    username: postgres
-    password: password721
+    url: jdbc:postgresql://ec2-34-227-120-94.compute-1.amazonaws.com:5432/db58vc4ub6rmco
+    username: thisolcotpohmp
+    password: 968a3815dbb395c7c248e5ac72786175e1c428604c4e4d245b9f762b47ad259d
 
