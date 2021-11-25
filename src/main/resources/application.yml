@@ -14,6 +14,10 @@ spring:
     username: ${DB_USER}
     password: ${DB_PASS}
 
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
 security:
   oauth2:
     resource:
