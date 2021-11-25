@@ -10,9 +10,9 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/student_home
-    username: postgres
-    password: password
+    url: ${DB_URI}
+    username: ${DB_USER}
+    password: ${DB_PASS}
 
 security:
   oauth2:
