@@ -24,36 +24,4 @@ public class SaveStudentResource extends AccountResource {
 
     @NotNull
     private Long educationCenterId;
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public Long getDistrictId() {
-        return districtId;
-    }
-
-    public void setDistrictId(Long districtId) {
-        this.districtId = districtId;
-    }
-
-    public Long getEducationCenterId() {
-        return educationCenterId;
-    }
-
-    public void setEducationCenterId(Long educationCenterId) {
-        this.educationCenterId = educationCenterId;
-    }
 }

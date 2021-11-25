@@ -7,15 +7,15 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email"),
 })
-public class User extends AuditModel {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,8 +34,12 @@ public class User extends AuditModel {
     @Size(max = 120)
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20)
-    private UserType role;
+    @NotNull
+    private Boolean isEnabled;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id"))
+    private List<Rol> roles;
 
 }
