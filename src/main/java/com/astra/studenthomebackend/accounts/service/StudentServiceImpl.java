@@ -1,7 +1,9 @@
 package com.astra.studenthomebackend.accounts.service;
 
+import com.astra.studenthomebackend.accounts.domain.model.EducationCenter;
 import com.astra.studenthomebackend.accounts.domain.model.Student;
 import com.astra.studenthomebackend.accounts.domain.model.auth.User;
+import com.astra.studenthomebackend.accounts.domain.repository.EducationCenterRepository;
 import com.astra.studenthomebackend.accounts.domain.repository.StudentRepository;
 import com.astra.studenthomebackend.accounts.domain.repository.UserRepository;
 import com.astra.studenthomebackend.accounts.domain.service.StudentService;
@@ -24,6 +26,9 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private DistrictRepository districtRepository;
 
+    @Autowired
+    private EducationCenterRepository educationCenterRepository;
+
     @Override
     public Student getStudentByIdAndUserId(Long studentId, Long userId) {
         if (!userRepository.existsById(userId)) {
@@ -34,13 +39,15 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student createStudent(Long userId, String educationCenter, Long districtId, Student student) {
+    public Student createStudent(Long userId, Long educationCenterId, Long districtId, Student student) {
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "Id", userId));
 
         District district = districtRepository.findById(districtId)
                 .orElseThrow(() -> new ResourceNotFoundException("District", "Id", districtId));
+        EducationCenter educationCenter = educationCenterRepository.findById(educationCenterId)
+                        .orElseThrow(() -> new ResourceNotFoundException("EducationCenter", "Id", educationCenterId));
 
         student.setUser(user);
         student.setEducationCenter(educationCenter);

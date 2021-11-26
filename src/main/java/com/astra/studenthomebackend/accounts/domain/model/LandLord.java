@@ -10,6 +10,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @PrimaryKeyJoinColumn(name = "account_id")
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "land_lords")
 @Data
 public class LandLord extends Account{

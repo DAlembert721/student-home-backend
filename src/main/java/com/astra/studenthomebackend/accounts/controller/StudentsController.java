@@ -5,6 +5,7 @@ import com.astra.studenthomebackend.accounts.domain.service.StudentService;
 import com.astra.studenthomebackend.accounts.resource.SaveStudentResource;
 import com.astra.studenthomebackend.accounts.resource.StudentResource;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class StudentsController {
     @Autowired
-    private ObjectMapper objectMapper;
+    private ModelMapper mapper;
     @Autowired
     private StudentService studentService;
 
@@ -23,10 +24,10 @@ public class StudentsController {
     }
 
     private Student convertToEntity(SaveStudentResource resource) {
-        return objectMapper.convertValue(resource, Student.class);
+        return mapper.map(resource, Student.class);
     }
 
     private StudentResource convertToResource(Student entity) {
-        return objectMapper.convertValue(entity, StudentResource.class);
+        return mapper.map(entity, StudentResource.class);
     }
 }

@@ -6,6 +6,7 @@ import com.astra.studenthomebackend.accounts.domain.repository.RolRepository;
 import com.astra.studenthomebackend.accounts.domain.repository.UserRepository;
 import com.astra.studenthomebackend.accounts.domain.service.UserService;
 import com.astra.studenthomebackend.accounts.exceptions.UserAlreadyExistsException;
+import com.astra.studenthomebackend.shared.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -39,6 +40,12 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         user.setRoles(roles);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
     }
 
     @Override

@@ -10,11 +10,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "accounts")
-public abstract class Account extends AuditModel {
+public class Account {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,6 +36,10 @@ public abstract class Account extends AuditModel {
     @Size(max = 15)
     @Column(unique = true)
     private String dni;
+
+    @NotNull
+    @Size(max = 10)
+    private String type;
 
     @NotNull
     @Size(max = 20)
