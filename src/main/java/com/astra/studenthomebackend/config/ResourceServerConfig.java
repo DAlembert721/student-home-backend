@@ -38,7 +38,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .antMatchers("/tokens/null/**" ).permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/oauth/**").permitAll()
-                .antMatchers("/tokens/**" ).authenticated();
+                .antMatchers("/tokens/**" ).authenticated()
+                .antMatchers("/api/**").authenticated();
 
     }
 }
