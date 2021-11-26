@@ -67,4 +67,19 @@ public class Property {
     @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
     private List<PropertyImage> propertyImages;
 
+    public boolean haveService(Service service) {
+        return this.getServices().contains(service);
+    }
+
+    public Property addService(Service service) {
+        if(!this.haveService(service))
+            this.getServices().add(service);
+        return this;
+    }
+
+    public Property removeService(Service service) {
+        if(this.haveService(service))
+            this.getServices().remove(service);
+        return this;
+    }
 }
