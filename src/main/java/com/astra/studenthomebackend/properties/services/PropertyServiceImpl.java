@@ -9,14 +9,23 @@ import com.astra.studenthomebackend.shared.exceptions.ResourceNotFoundException;
 import com.astra.studenthomebackend.properties.domain.models.Property;
 import com.astra.studenthomebackend.properties.domain.repositories.PropertyRepository;
 import com.astra.studenthomebackend.properties.domain.services.PropertyService;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PropertyServiceImpl implements PropertyService {
@@ -130,5 +139,21 @@ public class PropertyServiceImpl implements PropertyService {
     @Override
     public Page<Property> getAllActiveProperties(Boolean active, Pageable pageable) {
         return propertyRepository.findByActive(active, pageable);
+    }
+
+    @Override
+    public byte[] generateReports(Pageable pageable) {
+        byte[] data = null;
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("txt_titulo", "Prueba de titulo");
+
+        try {
+            File file = new ClassPathResource("/reports/inmuebles.jasper").getFile();
+            JasperPrint print = JasperFillManager.fillReport(file.getPath(), parametros, new JRBeanCollectionDataSource((Collection<?>) this.getAllActiveProperties(true, pageable)));
+            data = JasperExportManager.exportReportToPdf(print);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return data;
     }
 }

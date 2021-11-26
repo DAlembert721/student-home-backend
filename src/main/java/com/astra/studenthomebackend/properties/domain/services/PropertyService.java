@@ -17,4 +17,5 @@ public interface PropertyService {
     Page<Property> getAllPropertiesByServiceId(Long serviceId, Pageable pageable);
     Page<Property> getAllPropertiesByLandLordId(Long landLordId, Pageable pageable);
     Page<Property> getAllActiveProperties(Boolean active, Pageable pageable);
+    byte[] generateReports(Pageable pageable);
 }
