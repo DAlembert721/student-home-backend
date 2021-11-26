@@ -7,7 +7,7 @@ import com.astra.studenthomebackend.accounts.domain.repository.LandLordRepositor
 import com.astra.studenthomebackend.accounts.domain.repository.UserRepository;
 import com.astra.studenthomebackend.accounts.domain.service.LandLordService;
 import com.astra.studenthomebackend.shared.exceptions.ResourceNotFoundException;
-import com.astra.studenthomebackend.subscritions.model.Subscription;
+import com.astra.studenthomebackend.subscriptions.domain.model.Subscription;
 import com.astra.studenthomebackend.subscriptions.domain.repository.SubscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

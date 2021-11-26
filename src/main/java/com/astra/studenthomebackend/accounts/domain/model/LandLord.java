@@ -1,6 +1,7 @@
 package com.astra.studenthomebackend.accounts.domain.model;
 
-import com.astra.studenthomebackend.subscritions.model.Subscription;
+
+import com.astra.studenthomebackend.subscriptions.domain.model.Subscription;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
